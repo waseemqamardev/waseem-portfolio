@@ -21,16 +21,16 @@ export function MagneticButton({
   const ref = useRef<HTMLAnchorElement>(null)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
-  const sx = useSpring(x, { stiffness: 220, damping: 18 })
-  const sy = useSpring(y, { stiffness: 220, damping: 18 })
+  const sx = useSpring(x, { stiffness: 240, damping: 18 })
+  const sy = useSpring(y, { stiffness: 240, damping: 18 })
 
   const onMove = (e: React.MouseEvent) => {
     if (reduced || !ref.current) return
     const rect = ref.current.getBoundingClientRect()
     const dx = e.clientX - (rect.left + rect.width / 2)
     const dy = e.clientY - (rect.top + rect.height / 2)
-    x.set(dx * 0.25)
-    y.set(dy * 0.35)
+    x.set(dx * 0.22)
+    y.set(dy * 0.3)
   }
 
   const onLeave = () => {
@@ -40,8 +40,8 @@ export function MagneticButton({
 
   const styles =
     variant === 'primary'
-      ? 'bg-gradient-to-r from-champagne via-orchid to-ice text-ink shadow-[0_10px_40px_-12px_rgba(255,122,184,0.65)] hover:brightness-110'
-      : 'border border-pearl/25 text-pearl hover:border-ice/50 hover:bg-ice/10'
+      ? 'bg-blood text-white hover:bg-blood-dim'
+      : 'border border-white/30 text-pearl hover:border-blood hover:bg-blood/10'
 
   return (
     <motion.a
@@ -50,10 +50,12 @@ export function MagneticButton({
       data-cursor="hover"
       target={external ? '_blank' : undefined}
       rel={external ? 'noopener noreferrer' : undefined}
-      className={`inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold tracking-wide transition ${styles} ${className}`}
+      className={`inline-flex items-center gap-2 px-6 py-3.5 text-[12px] font-bold tracking-[0.2em] uppercase transition ${styles} ${className}`}
       style={{ x: sx, y: sy }}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
+      whileHover={reduced ? undefined : { scale: 1.03 }}
+      whileTap={reduced ? undefined : { scale: 0.98 }}
     >
       {children}
     </motion.a>

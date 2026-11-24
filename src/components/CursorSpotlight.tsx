@@ -9,7 +9,7 @@ export function CursorSpotlight() {
   const sx = useSpring(x, { stiffness: 90, damping: 22, mass: 0.8 })
   const sy = useSpring(y, { stiffness: 90, damping: 22, mass: 0.8 })
   const background = useMotionTemplate`
-    radial-gradient(680px circle at ${sx}px ${sy}px, rgba(255,122,184,0.18), rgba(167,139,250,0.12) 26%, rgba(87,226,255,0.08) 42%, transparent 62%)
+    radial-gradient(680px circle at ${sx}px ${sy}px, rgba(225,6,0,0.12), transparent 55%)
   `
 
   useEffect(() => {

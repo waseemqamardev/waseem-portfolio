@@ -2,25 +2,35 @@ import { fadeUp } from '../lib/motion'
 import { Reveal } from './Reveal'
 
 type Props = {
-  eyebrow: string
+  eyebrow?: string
   title: string
   description?: string
+  center?: boolean
 }
 
-export function SectionHeading({ eyebrow, title, description }: Props) {
+export function SectionHeading({
+  eyebrow,
+  title,
+  description,
+  center = false,
+}: Props) {
   return (
-    <Reveal className="mb-12 max-w-2xl md:mb-16" variants={fadeUp}>
-      <div className="mb-4 flex items-center gap-3">
-        <span className="h-px w-6 bg-gradient-to-r from-ice to-transparent" aria-hidden />
-        <p className="font-mono text-[11px] font-semibold tracking-[0.32em] text-ice uppercase">
-          {`// ${eyebrow}`}
+    <Reveal
+      className={`mb-10 md:mb-14 ${center ? 'mx-auto max-w-2xl text-center' : 'max-w-2xl'}`}
+      variants={fadeUp}
+    >
+      {eyebrow ? (
+        <p className="mb-3 text-sm font-semibold tracking-wide text-violet-soft">
+          {eyebrow}
         </p>
-      </div>
-      <h2 className="font-display text-4xl leading-[1.05] tracking-[-0.02em] text-pearl sm:text-5xl">
+      ) : null}
+      <h2 className="text-3xl leading-tight font-bold text-pearl sm:text-4xl md:text-5xl">
         {title}
       </h2>
       {description ? (
-        <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-mist">
+        <p
+          className={`mt-4 text-base leading-relaxed text-mist ${center ? 'mx-auto max-w-xl' : 'max-w-xl'}`}
+        >
           {description}
         </p>
       ) : null}

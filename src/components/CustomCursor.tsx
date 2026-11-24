@@ -59,21 +59,18 @@ export function CustomCursor() {
   return (
     <div className="pointer-events-none fixed inset-0 z-[100]" aria-hidden>
       <motion.div
-        className="absolute top-0 left-0 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ice shadow-[0_0_12px_rgba(87,226,255,0.8)]"
+        className="absolute top-0 left-0 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blood"
         style={{ x: sx, y: sy, opacity: visible ? 1 : 0 }}
       />
       <motion.div
-        className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 rounded-full border border-champagne/80"
+        className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 rounded-full border border-blood/70"
         style={{
           x: rx,
           y: ry,
           opacity: visible ? 1 : 0,
-          width: hovering ? 58 : 38,
-          height: hovering ? 58 : 38,
-          backgroundColor: hovering ? 'rgba(255,122,184,0.12)' : 'transparent',
-          boxShadow: hovering
-            ? '0 0 24px rgba(167,139,250,0.35)'
-            : '0 0 0 transparent',
+          width: hovering ? 48 : 32,
+          height: hovering ? 48 : 32,
+          backgroundColor: hovering ? 'rgba(225,6,0,0.12)' : 'transparent',
         }}
       />
     </div>

@@ -1,38 +1,19 @@
-import { GraduationCap } from 'lucide-react'
-import { PremiumCard } from '../components/PremiumCard'
-import { Reveal } from '../components/Reveal'
-import { SectionHeading } from '../components/SectionHeading'
 import { education, site } from '../data/site'
-import { fadeUp } from '../lib/motion'
+import { Reveal } from '../components/Reveal'
 
 export function Education() {
   return (
-    <section id="education" className="scroll-mt-24 py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-5 md:px-8">
-        <SectionHeading eyebrow="Education" title="Academic foundation" />
-
-        <Reveal variants={fadeUp}>
-          <PremiumCard className="rounded-2xl">
-            <article className="flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between md:p-8">
-              <div className="flex items-start gap-4">
-                <div className="flex size-12 shrink-0 items-center justify-center border border-champagne/30 bg-champagne/10 text-champagne">
-                  <GraduationCap size={22} aria-hidden />
-                </div>
-                <div>
-                  <h3 className="font-display text-2xl text-pearl">
-                    {education.degree}
-                  </h3>
-                  <p className="mt-1 text-mist">{education.school}</p>
-                  <p className="mt-3 text-sm text-mist">
-                    Languages: {site.languages.join(' · ')}
-                  </p>
-                </div>
-              </div>
-              <p className="text-sm font-medium text-champagne sm:text-right">
-                {education.period}
-              </p>
-            </article>
-          </PremiumCard>
+    <section id="education" className="bg-void py-[clamp(3.5rem,8vw,5.5rem)]">
+      <div className="container-editorial">
+        <Reveal>
+          <h2 className="font-display text-[clamp(1.9rem,3.8vw,2.8rem)] text-white uppercase">
+            {education.degree}
+          </h2>
+          <p className="mt-3 text-lg text-mist">{education.school}</p>
+          <p className="mt-2 text-[11px] font-semibold tracking-[0.2em] text-blood uppercase">
+            {education.period}
+          </p>
+          <p className="mt-5 text-sm text-mist">Languages: {site.languages.join(' · ')}</p>
         </Reveal>
       </div>
     </section>

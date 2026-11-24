@@ -26,8 +26,8 @@ export function PremiumCard({ children, className = '', style }: Props) {
   const rx = useSpring(0, { stiffness: 180, damping: 18 })
   const ry = useSpring(0, { stiffness: 180, damping: 18 })
   const lift = useSpring(0, { stiffness: 220, damping: 20 })
-  const glow = useMotionTemplate`radial-gradient(420px circle at ${mx}% ${my}%, rgba(255,122,184,0.28), rgba(87,226,255,0.12) 40%, transparent 55%)`
-  const border = useMotionTemplate`radial-gradient(520px circle at ${mx}% ${my}%, rgba(255,122,184,0.75), rgba(167,139,250,0.45) 30%, rgba(87,226,255,0.35) 50%, transparent 68%)`
+  const glow = useMotionTemplate`radial-gradient(420px circle at ${mx}% ${my}%, rgba(84,84,212,0.22), transparent 55%)`
+  const border = useMotionTemplate`radial-gradient(480px circle at ${mx}% ${my}%, rgba(84,84,212,0.7), transparent 60%)`
 
   const reset = useCallback(() => {
     rx.set(0)
@@ -47,9 +47,9 @@ export function PremiumCard({ children, className = '', style }: Props) {
       const py = (e.clientY - rect.top) / rect.height
       mx.set(px * 100)
       my.set(py * 100)
-      ry.set((px - 0.5) * 9)
-      rx.set((0.5 - py) * 9)
-      lift.set(-8)
+      ry.set((px - 0.5) * 6)
+      rx.set((0.5 - py) * 6)
+      lift.set(-5)
     },
     [mx, my, reduced, rx, ry, lift],
   )
@@ -76,10 +76,6 @@ export function PremiumCard({ children, className = '', style }: Props) {
         style={{ background: border, borderRadius: 'inherit' }}
       />
       <div className="premium-surface relative h-full overflow-hidden rounded-[inherit]">
-        <span className="hud-corner hud-corner-tl opacity-0 transition-opacity duration-300 group-hover:opacity-80" aria-hidden />
-        <span className="hud-corner hud-corner-tr opacity-0 transition-opacity duration-300 group-hover:opacity-80" aria-hidden />
-        <span className="hud-corner hud-corner-bl opacity-0 transition-opacity duration-300 group-hover:opacity-80" aria-hidden />
-        <span className="hud-corner hud-corner-br opacity-0 transition-opacity duration-300 group-hover:opacity-80" aria-hidden />
         <motion.div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
